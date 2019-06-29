@@ -31,7 +31,7 @@ def remove_punc(s):
 def handle_data(n_class):
     train_data = get_text_classification_datasets(n_class)
     dataset = DataSet()
-    vocab = Vocabulary(min_freq=0, unknown='<unk>', padding='<pad>')
+    vocab = Vocabulary(max_size=10000, min_freq=15, unknown='<unk>', padding='<pad>')
     for i in range(len(train_data.data)):
         ans = remove_punc(train_data.data[i])
         dataset.append((Instance(content=ans, target=int(train_data.target[i]))))
