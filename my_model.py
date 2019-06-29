@@ -79,17 +79,20 @@ class myLSTM(nn.Module):
             num_layers=1,
             batch_first=True
         )
+        self.avg1d = nn.AvgPool1d(config.max_len)
         # self.hidden = (torch.zeros(1, batch, self.hidden_dim),
         #                 torch.zeros(1, batch, self.hidden_dim))
         self.embedding = nn.Embedding(input_size, 100)
-        self.out = nn.Linear(16, n_class)
-
+        self.out = nn.Linear(self.hidden_dim, n_class)
+				
     def forward(self, index):
         x = self.embedding(index)
         output, hidden = self.myLSTM(x)
-        output = torch.mean(output, dim=1, keepdim=True)
-        output_in_last_timestep=output[:,-1,:]
-        x = self.out(output_in_last_timestep)
+        x = output.permute(0, 2, 1)
+    	  x = self.avg1d(x)
+
+    	  x = x.view(-1, out.size(1))
+    	  x = self.out(x)
         return {"pred": x}
 
 
