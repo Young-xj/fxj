@@ -86,13 +86,13 @@ class myLSTM(nn.Module):
         self.out = nn.Linear(self.hidden_dim, n_class)
 	
     def forward(self, index):
-	x = self.embedding(index)
-	output, hidden = self.myLSTM(x)
-	x = output.permute(0, 2 ,1)
-	x = self.avg1d(x)
-	x = x.view(-1, x.size(1))
-	x = self.out(x)
-	return {"pred": x}
+        x = self.embedding(index)
+        output, hidden = self.myLSTM(x)
+        x = output.permute(0, 2 ,1)
+        x = self.avg1d(x)
+        x = x.view(-1, x.size(1))
+        x = self.out(x)
+        return {"pred": x}
 
 
 
