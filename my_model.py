@@ -147,17 +147,15 @@ class myQnn(nn.Module):
         # # x = torch.cat((output1, output1), dim=2) # 在特征层维度进行扩展
         # #x = output1
         x = self.embedding(index)
-        print(x.shape)
          # Reverse of copy of numpy array of given tensor
         #y = y.cpu().detach().numpy()[::-1]
         y = self.embedding(y)
         output1, hidden1 = self.myLSTM(x)
         output2, hidden2 = self.myLSTM(y)  # 反转
         x = torch.cat((output1, output2), dim=2)
-        print(x.shape)
+        x = x.permute(0, 2 ,1)
+        x = self.avg1d(x)
         x = x.unsqueeze(3)
-        x = x.permute(0, 2, 1, 3)
-        print(x.shape)
         x1 = self.conv1(x)
         x2 = self.conv2(x)
         x3 = self.conv3(x)
