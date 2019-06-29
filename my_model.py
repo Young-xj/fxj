@@ -89,10 +89,10 @@ class myLSTM(nn.Module):
         x = self.embedding(index)
         output, hidden = self.myLSTM(x)
         x = output.permute(0, 2, 1)
-    	  x = self.avg1d(x)
+    	x = self.avg1d(x)
 
-    	  x = x.view(-1, out.size(1))
-    	  x = self.out(x)
+    	x = x.view(-1, out.size(1))
+    	x = self.out(x)
         return {"pred": x}
 
 
