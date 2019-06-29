@@ -54,7 +54,7 @@ def main():
     parser.add_argument("--embedding", "-e", default=100, type=int)
     parser.add_argument("--category", "-c", default=4, type=int)
     parser.add_argument("--batch", "-b", default=8, type=int)
-    parser.add_argument("--learning_rate", "-l", default=0.005, type=float)
+    parser.add_argument("--learning_rate", "-l", default=0.05, type=float)
     args = parser.parse_args()
     if args.category > 20 or args.category < 1:
         raise Exception("the number of category must be between 1 and 20")
