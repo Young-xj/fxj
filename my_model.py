@@ -79,7 +79,7 @@ class myLSTM(nn.Module):
             num_layers=1,
             batch_first=True
         )
-        self.avg1d = nn.AvgPool1d(config.max_len)
+        self.avg1d = nn.AvgPool1d(20000)
         # self.hidden = (torch.zeros(1, batch, self.hidden_dim),
         #                 torch.zeros(1, batch, self.hidden_dim))
         self.embedding = nn.Embedding(input_size, 100)
