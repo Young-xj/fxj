@@ -8,7 +8,7 @@ from sru import SRU, SRUCell
 
 class new(nn.Module):
     def __init__(self, input_dim, n_class):
-        super(cnn, self).__init__()
+        super(new, self).__init__()
         vocb_size = input_dim
         self.dim = 100
         self.max_len = 20000
