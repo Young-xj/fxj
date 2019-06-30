@@ -6,7 +6,7 @@ import torch.nn.functional as F
 import torch.autograd as autograd
 from sru import SRU, SRUCell
 
-class cnn(nn.Module):
+class new(nn.Module):
     def __init__(self, input_dim, n_class):
         super(cnn, self).__init__()
         vocb_size = input_dim
