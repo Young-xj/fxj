@@ -69,9 +69,9 @@ def main():
         model = myQnn(dic_size, args.category)
         output = "qnn_model.pth"
     else:
-        model = cnn(dic_size, args.category)
+        model = new(dic_size, args.category)
         #model = torch.load("cnn_model.pth")
-        output = "cnn_model.pth"
+        output = "new_model.pth"
     trainer = Trainer(train_data, model, loss=CrossEntropyLoss(pred="pred", target='target'), device = "cuda:3",
                       optimizer=SGD(model.parameters(), lr=args.learning_rate), n_epochs=args.n_epochs,
                       dev_data=test_data, metrics=AccuracyMetric(pred="pred", target='target'), batch_size=args.batch)
