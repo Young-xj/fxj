@@ -4,6 +4,7 @@ import numpy as np
 import string
 import torch.nn.functional as F
 import torch.autograd as autograd
+from sru import SRU, SRUCell
 
 class cnn(nn.Module):
     def __init__(self, input_dim, n_class):
@@ -124,7 +125,7 @@ class myQnn(nn.Module):
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=self.max_len)
         )
-        self.myLSTM = torch.nn.LSTM(
+        self.myLSTM = SRU(
             input_size=100,
             hidden_size=128,
             num_layers=1,
