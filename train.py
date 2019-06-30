@@ -8,7 +8,7 @@ import torch
 import string
 import argparse
 from sklearn.datasets import fetch_20newsgroups
-from my_model import rnn, cnn, myLSTM, myQnn
+from my_model import rnn, new, myLSTM, myQnn
 
 
 def get_text_classification_datasets(n_class):
@@ -49,7 +49,7 @@ def handle_data(n_class):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--methods", "-m", default="qnn", choices=["rnn", "lstm", "cnn", "qnn"])
+    parser.add_argument("--methods", "-m", default="new", choices=["rnn", "lstm", "new", "qnn"])
     parser.add_argument("--n_epochs", "-n", default=5, type=int)
     parser.add_argument("--embedding", "-e", default=100, type=int)
     parser.add_argument("--category", "-c", default=4, type=int)
