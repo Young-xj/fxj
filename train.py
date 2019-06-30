@@ -50,9 +50,9 @@ def handle_data(n_class):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--methods", "-m", default="new", choices=["rnn", "lstm", "new", "qnn"])
-    parser.add_argument("--n_epochs", "-n", default=5, type=int)
+    parser.add_argument("--n_epochs", "-n", default=20, type=int)
     parser.add_argument("--embedding", "-e", default=100, type=int)
-    parser.add_argument("--category", "-c", default=4, type=int)
+    parser.add_argument("--category", "-c", default=16, type=int)
     parser.add_argument("--batch", "-b", default=8, type=int)
     parser.add_argument("--learning_rate", "-l", default=0.05, type=float)
     args = parser.parse_args()
