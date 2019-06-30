@@ -125,10 +125,11 @@ class myQnn(nn.Module):
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=self.max_len)
         )
-        self.myLSTM = SRU(
+        self.myLSTM = torch.nn.LSTM(
             input_size=100,
             hidden_size=128,
             num_layers=1,
+            batch_first=True
         )
         self.avg1d = nn.AvgPool1d(self.max_len)
         self.out = nn.Linear(48, n_class)
